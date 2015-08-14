@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megan Tiu</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+	<!-- Header -->
+	<div class="container-fluid">
+		<div class="header">
+			<h1 id="head">MEGAN TIU</h1>
+			<div class="row">
+				<div class="col-xs-4 col-md-4">
+					<%= link_to "home", root_path %>
+				</div>
+				<div class="col-xs-4 col-md-4">
+					<%= link_to "about", about_path %>
+				</div>
+				<!-- <div class="col-xs-3 col-md-3">
+					<a href="blog.html">blog</a>
+				</div> -->
+				<div class="col-xs-4 col-md-4">
+					<%= link_to "contact", contact_path %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Header -->
+
+<%= yield %>
+
+<!-- Footer -->
+	<div class="container">
+		<div class="footer">
+			<%= link_to image_tag('my_tw2.png'), "http://twitter.com/megandtiu" %>
+			<%= link_to image_tag("32px.png"), "http://github.com/megantiu" %>
+			<%= link_to image_tag("my_li2.png"), "http://linkedin.com/in/megantiu" %>
+			<%= link_to image_tag("email.png"), "mailto:megan@megantiu.com" %>
+		</div>
+	</div>
+<!-- /Footer -->
+
+</body>
+</html>
