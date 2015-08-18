@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 
   post 'contact' => 'welcome#contact'
 
-  get 'contact2' => 'contact#contact2'
-  post 'contact2' => 'contact#contact2'
-  post 'contacts' => 'contact#contact2'
-  post 'create_contact' => 'contact#create_contact'
+  #get 'contact2' => 'contact#contact2'
+  #post 'contact2' => 'contact#contact2'
+  #post 'contacts' => 'contact#contact2'
+  post 'create_contact' => 'welcome#create_contact'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -5,8 +5,8 @@ class WelcomeController < ApplicationController
   def about
   end
 
-  def contact
-  	@success = 'Thank you! Message sent.'
+  #def contact
+  	#@success = 'Thank you! Message sent.'
   # 	@contact = Contact.new
   # 	def create
 		# 	@contact = Contact.new(params[:contact])
@@ -16,35 +16,35 @@ class WelcomeController < ApplicationController
 	 #  	render :new
 	 #  	end
 	 #  end
-   end
+   #end
 
 	# def new
  #    @contact = Contact.new
  #    if Contact.new(params[:contact]).deliver
- #    	redirect_to '/contacts/thanks', :alert => ["Yeah!"]
+ #    	redirect_to contact_path, :alert => ["Yeah!"]
  #    end
  #  end
 
-  # def create
-		# @contact = Contact.new(params[:contact])
-  #   if @contact.valid?
-		# 	@contact.deliver
-  #  	else 
-  # 	render :new
-  # 	end
-  # end
+ #  def create
+	# 	@contact = Contact.new(params[:contact])
+ #    if @contact.valid?
+	# 		@contact.deliver
+ #   	else 
+ #  	render :new
+ #  	end
+ #  end
 
   def create_contact
+  	contact = Contact.new
   	contact.name = params[:name]
   	contact.email = params[:email]
   	contact.message = params[:message]
-  	# contact.deliver
+  	contact.deliver
 
   	#if contact
   		#params[:success] = true
   		@success = 'Thank you! Message sent.'
-  		redirect_to contact_path, :notice => ['yay']
-  		contact = Contact.new
+  		redirect_to contact_path, :notice => @success
   		# contact_path, notice: 'yay'
   	#end
   end

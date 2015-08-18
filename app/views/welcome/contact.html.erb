@@ -1,8 +1,8 @@
 <body>
-	<% if params[:success] == 'true' %>
-		<p class="alert alert-success" id="notice"><%= @success %></p>
+	<% if :notice == @success %>
+		<p class="alert alert-success" id="notice"><%= notice %>
+		</p>
 	<% end %>
-	<p id="notice"><%= notice %></p>
 <div class="window" id="nyc_jumbo">
 	<div class="container-fluid">
 		<div id="contact_box">
