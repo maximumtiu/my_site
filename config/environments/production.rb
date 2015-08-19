@@ -26,7 +26,6 @@ Rails.application.configure do
     :user_name      => ENV['GMAIL_USERNAME'],
     :password       => ENV['GMAIL_PASSWORD'],
     :openssl_verify_mode  => 'none'
-    :domain         => 'heroku.com'
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
