@@ -18,7 +18,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.default_url_options = { :host => 'megantiu.com' }
+  config.action_mailer.default_url_options = { :host => 'http://www.megantiu.com' }
   ActionMailer::Base.smtp_settings = {
     :address        => "smtp.gmail.com",
     :port           => 25,
@@ -26,7 +26,7 @@ Rails.application.configure do
     :user_name      => ENV['GMAIL_USERNAME'],
     :password       => ENV['GMAIL_PASSWORD'],
     :openssl_verify_mode  => 'none'
-    #:domain         => 'heroku.com'
+    :domain         => 'heroku.com'
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
