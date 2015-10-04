@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root 'welcome#index'
 
   get 'about' => 'welcome#about'
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
   #post 'contact2' => 'contact#contact2'
   #post 'contacts' => 'contact#contact2'
   post 'create_contact' => 'welcome#create_contact'
+
+  get 'blog' => 'blog#index'
+  get 'blog/1' => 'blog#post_one'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
