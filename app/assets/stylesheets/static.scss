@@ -1,0 +1,126 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.about {
+	font-size: 18px;
+	text-align: left;
+}
+
+.container.home {
+  text-align: center;
+  margin-top: 50px;
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 54px;
+  }
+
+  .me-pic {
+    width: 25%;
+    max-height: 250px;
+    max-width: 250px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    padding: 0 150px;
+  }
+
+  .social-icons {
+    text-align: center;
+    margin: 1.5em 0;
+  }
+
+  .links {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .link {
+    padding: 0 8px;
+  }
+}
+
+.now {
+  ul {
+    margin-left: 10px;
+  }
+
+  li {
+    text-align: left;
+    margin: 10px 0; 
+  }
+
+  p#now {
+    font-size: 22px;
+    text-align: center;
+  }
+}
+
+/* About page */
+
+@media screen and (min-width: 1200px) {
+	.content.about {
+    padding: 0 175px;
+	}
+}
+
+/* Now list responsive adjustments */
+
+@media screen and (min-width: 1200px) {
+  .content.now {
+    padding: 0 200px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .content.now {
+    font-size: 15px;
+    margin-left: -20px;
+  }
+}
+
+ /* Homepage responsivity */
+
+@media screen and (max-width: 991px) {
+	.container.home {
+	  .description {
+	    padding: 0 25px;
+	  }
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.container.home {
+	  .me-pic {
+	    height: 30%;
+	    width: 30%;
+	  }
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.container.home {
+	  .me-pic {
+	    height: 45%;
+	    width: 45%;
+	  }
+	  .about {
+	  	font-size: 15px;
+	  }
+	}
+}
+
+@media screen and (max-width: 414px) and (min-width: 320px) {
+  .container.home {
+    margin-top: 75px;
+  }
+}

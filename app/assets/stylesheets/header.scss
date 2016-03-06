@@ -1,0 +1,61 @@
+.partial {
+  text-align: center;
+  margin-top: 30px;
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 45px;
+    margin-top: 15px;
+  }
+
+  .me-pic {
+    height: 15%;
+    width: 15%;
+    max-height: 250px;
+    max-width: 250px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    padding: 0 150px;
+  }
+
+  .social-icons {
+    text-align: center;
+    margin: 1.5em 0;
+  }
+
+  .links {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .link {
+    padding: 0 10px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .description {
+      padding: 0 25px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .me-pic {
+      height: 30%;
+      width: 30%;
+    }
+  }
+
+  @media screen and (max-width: 414px) and (min-width: 320px) {
+    .container {
+      margin-top: 75px;
+    }
+  }
+}
