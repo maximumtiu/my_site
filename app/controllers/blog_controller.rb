@@ -7,4 +7,7 @@ class BlogController < ApplicationController
 
   def post_two
   end
+
+  def post_three
+  end
 end
