@@ -8,6 +8,7 @@ gem 'coffee-rails'
 gem 'bootstrap-sass'
 gem 'turbolinks', '5.0.0.beta2'
 gem 'rollbar'
+gem 'haml-rails'
 
 group :development do
 	gem 'sqlite3'
