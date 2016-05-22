@@ -8,8 +8,8 @@ class FileParser
 
   # Converts a markdown file to haml
   def self.run(path)
-    input = File.open(path).read
-    output = Kramdown::Document.new(input).to_html.gsub("’", "'")
+    input    = File.open(path).read
+    output   = Kramdown::Document.new(input).to_html.gsub("’", "'")
     new_path = "#{Rails.root}/app/views/blog/new_post.html.erb"
 
     File.open(new_path, 'w') { |file| file.puts output }
