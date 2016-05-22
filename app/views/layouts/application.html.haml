@@ -5,8 +5,7 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %title Megan Tiu
-    %meta{:content => "Megan Tiu is a full-stack web developer based in Atlanta, Georgia.", :name => "description"}
+    = render partial: "layouts/meta.html.haml"
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     %link{:href => "https://fonts.googleapis.com/css?family=Patua+One", :rel => "stylesheet", :type => "text/css"}
