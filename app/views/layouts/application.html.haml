@@ -6,12 +6,12 @@
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title Megan Tiu
-    %meta{:content => "Megan Tiu is a full-stack web developer based in Atlanta, Georgia.", :name => "description"}/
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    %meta{:content => "Megan Tiu is a full-stack web developer based in Atlanta, Georgia.", :name => "description"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    %link{:href => "https://fonts.googleapis.com/css?family=Patua+One", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "https://fonts.googleapis.com/css?family=Playfair+Display:700,900", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://fonts.googleapis.com/css?family=Patua+One", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "https://fonts.googleapis.com/css?family=Playfair+Display:700,900", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600", :rel => "stylesheet", :type => "text/css"}
     = csrf_meta_tags
     - unless Rails.env.development?
       :javascript
