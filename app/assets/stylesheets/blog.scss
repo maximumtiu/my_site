@@ -1,3 +1,8 @@
+@mixin covert-link {
+  text-decoration: none;
+  color: #000;
+}
+
 .blog {
   margin: 0 0 60px 0;
 }
@@ -6,21 +11,63 @@
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   padding: 0 70px;
+  font-weight: 300;
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  img {
+    height: 60%;
+    width: 60%;
+    margin: 2% 0;
+  }
+
+  pre {
+    margin: 2% 0;
+    padding: 2%;
+    text-align: left;
+    border: 0;
+    border-radius: 0;
+  }
+
+  ul {
+    text-align: left;
+    padding: 0 15%;
+  }
+
+  code.inline {
+    font-size: 75%;
+  }
+
+  .heavier {
+    font-weight: 400;
+  }
 }
 
 .title {
   font-family: 'Playfair Display', serif;
+  @include covert-link;
+}
+
+.covert-link {
   text-decoration: none;
   color: #000;
+}
+
+.date-stamp {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+  @include covert-link;
 }
 
 .body {
   text-align: left;
   padding: 0 100px;
-}
-
-.date-stamp {
-  font-weight: bold;
 }
 
 .small-note {
@@ -35,7 +82,23 @@
   }
 }
 
+@media screen and (min-width: 770px) {
+  .post {
+    pre {
+      margin: 2% 10%;
+    }
+
+    li {
+      margin: 1% 0;
+    }
+  }
+}
+
 @media screen and (max-width: 770px) {
+  .post img {
+    width: 100%;
+    height: 100%;
+  }
   .body {
     padding-left: 0px;
     padding-right: 0px;

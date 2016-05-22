@@ -1,0 +1,87 @@
+= render partial: "static/header.html.haml"
+.window.blog
+  .row
+    .col-xs-12.col-sm-12.col-md-12.blogstream
+      %h2.title Getting and Setting Cookies in Javascript the Fun and Easy Way
+      .post
+        %p.date-stamp May 22, 2016
+        %p.body
+          Here we are: my first installment for the #BlogBuddies blog with
+          %a{href: "http://locrawfish.github.io/"} my buddy Loren!
+          My goal for this series,
+          %a{href: "/blog/3/blog-buddies"} (as outlined here),
+          is to share what I'm learning on a weekly basis with others--be it lessons in teamwork, new workflow techniques, or fun little hacks--and to have a record of my progress. This week, 
+          %span.heavier I worked with cookies for the first time.
+        %h2#whats-the-big-deal
+          So what's the big deal?
+        %p.body 
+          Until I started work on one of our company's new Javascript-based projects, I had never really thought about, much less used, cookies. I'd only ever used the Rails session, as I've never had specific cookie-related needs (especially considering I prefer spending my time server-side). As such, I'd always assumed (for whatever reason, mostly out of ignorance), that cookies would be difficult to use effectively. This week, I was very happy to be proved wrong.
+        %h2#how-do-they-work
+          How do they work?
+        %p.body
+          %span.heavier Cookies are domain-specific,
+          so any you've collected from megantiu.com won't follow you back over to Twitter or wherever you may go next. You can even check the cookies on the current site really easily. Open your browser's Javascript console and type:
+          %pre
+            %code document.cookie
+        %p.body
+          That's all the current page's cookies! (Yes, I'm using Google Analytics. ¯\_(ツ)_/¯) It's just as easy to set a cookie, too:
+          %pre
+            %code document.cookie = "meganscookie=12345"
+        %p.body
+          A cookie is a 
+          %span.heavier key-value pair,
+          so you could use them to store a myriad of things, like a user's id number, temporary values that don't need to interact with the server, or fun easter eggs for observant individuals. Now, if you check your browser's content storage settings, you'll see the following:
+        = image_tag 'cookie.png', class: 'body'
+        %p.body
+          Hey, I didn't set all those values! That's right, all those are default values and many of them are 
+          %span.heavier configurable:
+          %sup
+            %a{href: "#resources"} 1
+        %ul.body
+          %li
+            %code.inline path
+            refers to the associated path (or URL) where the cookie is active. The default is 
+            %code.inline /
+            , which means the cookie will apply to all pages under the given domain.
+          %li
+            %code.inline domain
+            is the domain where the cookie will be active. In this case, it's megantiu.com, as it defaults to the host of the current page. If you specify a domain, all its subdomains will be included.
+          %li
+            %code.inline expires
+            takes a UTC date-time string for the desired cookie expiration time. A quick way to calculate the expiration string for a week from now would be:
+        %p.body
+          %pre
+            %code
+              miliseconds = (1000 * 60 * 60 * 24 * 7)&#x000A;d = new Date()&#x000A;d.setTime(d.getTime() + miliseconds)&#x000A;d.toUTCString()
+        %p.body
+          Which would return:
+          %pre
+            %code "Sun, 05 Jun 2016 16:49:09 GMT"
+        %p.body
+          And now, here are some options that aren't listed in the above image, but are available for configuration:
+          %ul
+            %li
+              %code.inline secure
+              allows you to specify that cookie only be active over secure https connections.
+            %li
+              %code.inline max-age
+              is a value in seconds that refers to the maximum lifetime your cookie should have.
+        %h2#thats-pretty-cool
+          Okay, that's all pretty cool.
+        %p.body
+          Right? And if I wanted to set my cookie to expire in one week and be applicable across all megantiu.com subdomains (like iam.megantiu.com), it'd look like this:
+          %pre
+            %code document.cookie = "meganscookie=12345;domain=.megantiu.com;expires=Sun, 05 Jun 2016 16:49:09 GMT"
+        %p.body
+          So now the browser shows us:
+        = image_tag 'new_cookie.png', class: 'body'
+        %p.body
+          Yep! That's exactly what I asked for!
+        %p.body
+          So it turns out that cookies aren't nearly as difficult to use as I thought; they're actually pretty straightforward. I look forward to using them more in my projects and hope you do too!
+        %h3#resources Resources
+        %p.body
+          1. 
+          %strong “Document.cookie”
+          , 
+          %a{href: "https://developer.mozilla.org/en-US/docs/Web/API/document/cookie"} https://developer.mozilla.org/en-US/docs/Web/API/document/cookie
