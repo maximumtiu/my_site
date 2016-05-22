@@ -82,6 +82,7 @@ GEM
       ruby_parser (~> 3.5)
     i18n (0.7.0)
     json (1.8.3)
+    kramdown (1.9.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -188,6 +189,8 @@ DEPENDENCIES
   coffee-rails
   dotenv-rails
   haml-rails
+  html2haml
+  kramdown
   pg
   pry
   pry-rails

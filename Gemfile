@@ -9,6 +9,8 @@ gem 'bootstrap-sass'
 gem 'turbolinks', '5.0.0.beta2'
 gem 'rollbar'
 gem 'haml-rails'
+gem 'html2haml'
+gem 'kramdown'
 
 group :development do
 	gem 'sqlite3'
