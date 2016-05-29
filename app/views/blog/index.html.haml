@@ -2,6 +2,27 @@
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream
+      %a{:href => "blog/5/rubys-enumerable-module-and-you"}
+        %h2.title Ruby's Enumerable Module and You
+        %p.date-stamp May 29, 2016
+      .post
+        %p.body
+          When was the last time you explored
+          = succeed "?" do
+            %a{:href => "http://ruby-doc.org/core-2.3.0/Enumerable.html"} Ruby's Enumerable module
+        %p.body
+          Want to get more control over your data?
+          %em Of course you do.
+          Thankfully, you're in luck!
+          %code.inline Enumerable
+          is included anywhere you can use an
+          %code.inline #each
+          method. Arrays? Yup. Hashes? You bet. You can even use it in your own custom classes. Discovering this module was a big level-up for me–all of a sudden, I could accomplish more in fewer lines of code. I could read my data-concerned code easier. I could lift a horse with my newfound power! (Okay, that last one's probably not true. But still, the Enumerable module is pretty great.)
+        %p.body Here are a few of my favorite ways to use the Enumerable module:
+        %p.body
+          %a{:href => "blog/4/getting-and-setting-cookies-in-javascript"} Read more... 
+  .row
+    .col-xs-12.col-sm-12.col-md-12.blogstream
       %a{:href => "blog/4/getting-and-setting-cookies-in-javascript"}
         %h2.title Getting and Setting Cookies in Javascript the Fun and Easy Way
         %p.date-stamp May 22, 2016
