@@ -22,11 +22,11 @@
           %span.heavier Cookies are domain-specific,
           so any you've collected from megantiu.com won't follow you back over to Twitter or wherever you may go next. You can even check the cookies on the current site really easily. Open your browser's Javascript console and type:
           %pre
-            %code document.cookie
+            document.cookie
         %p.body
           That's all the current page's cookies! (Yes, I'm using Google Analytics. ¯\_(ツ)_/¯) It's just as easy to set a cookie, too:
           %pre
-            %code document.cookie = "meganscookie=12345"
+            document.cookie = "meganscookie=12345"
         %p.body
           A cookie is a 
           %span.heavier key-value pair,
@@ -51,12 +51,11 @@
             takes a UTC date-time string for the desired cookie expiration time. A quick way to calculate the expiration string for a week from now would be:
         %p.body
           %pre
-            %code
-              miliseconds = (1000 * 60 * 60 * 24 * 7)&#x000A;d = new Date()&#x000A;d.setTime(d.getTime() + miliseconds)&#x000A;d.toUTCString()
+            miliseconds = (1000 * 60 * 60 * 24 * 7)&#x000A;d = new Date()&#x000A;d.setTime(d.getTime() + miliseconds)&#x000A;d.toUTCString()
         %p.body
           Which would return:
           %pre
-            %code "Sun, 05 Jun 2016 16:49:09 GMT"
+            "Sun, 05 Jun 2016 16:49:09 GMT"
         %p.body
           And now, here are some options that aren't listed in the above image, but are available for configuration:
           %ul
@@ -71,7 +70,7 @@
         %p.body
           Right? And if I wanted to set my cookie to expire in one week and be applicable across all megantiu.com subdomains (like iam.megantiu.com), it'd look like this:
           %pre
-            %code document.cookie = "meganscookie=12345;domain=.megantiu.com;expires=Sun, 05 Jun 2016 16:49:09 GMT"
+            document.cookie = "meganscookie=12345;domain=.megantiu.com;expires=Sun, 05 Jun 2016 16:49:09 GMT"
         %p.body
           So now the browser shows us:
         = image_tag 'new_cookie.png', class: 'body'
