@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   get 'blog/3/blog-buddies'                                          => 'blog#post_three'
   get 'blog/4/getting-and-setting-cookies-in-javascript'             => 'blog#post_four'
   get 'blog/5/rubys-enumerable-module-and-you'                       => 'blog#post_five'
-  get 'blog/6/adventures-of-a-one-woman-dev-team'                    => 'blog#post_six'
+  get 'blog/6/adventures-of-a-one-woman-development-team'            => 'blog#post_six'
 end
