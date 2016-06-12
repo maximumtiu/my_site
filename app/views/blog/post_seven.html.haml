@@ -1,0 +1,73 @@
+= render partial: "static/header.html.haml"
+.window.blog
+  .row
+    .col-xs-12.col-sm-12.col-md-12.blogstream
+      %h1.title#the-ins-and-outs-of-put-and-patch The Ins and Outs of PUT and PATCH
+      .post
+        %p.date-stamp June 12, 2016
+        %p.body The world of HTTP is vast! GET and POST are by far the most popular type of requests, but they'll only get you so far. Until recently, the only instances I'd ever really needed to use methods other than GET and POST were server-side while consuming others' APIs; this never proved to be an issue. Lately, however, I've been making more API requests from my own client-side apps, which has brought along some unique challenges. What if you need to update a resource? Meet PUT and PATCH.
+        %h2#whats-the-difference What's the Difference?
+        %p.body In practice, I've found most people use the two interchangably. But there are distinct differences!
+        %p.body
+          PUT is for replacing an entire resource with the new version, while PATCH is for updating parts of a resource. So, if you want to explicitly send all attributes of a resource every time you send an update request, use PUT. If you're only updating the fields that changed, use PATCH. However! PATCH is intended to transport a set of instructions detailing
+          %em how
+          to update a resource, while PUT provides a resource's attributes and values. So while I PUT request may look like this:
+        %p.body
+          %pre
+            PUT /coffee/123&#x000A;{ 'cream': null, 'sugar': 1 }
+        %p.body A PATCH request might look like this:
+        %p.body
+          %pre
+            PATCH /coffee/123&#x000A;[&#x000A;&nbsp;{ "op": "replace", "path": "/sugar", "value": 1 }&#x000A;]
+        %p.body
+          where we are performing the
+          %code.inline op
+          of
+          %code.inline replacing
+          the
+          %code.inline sugar
+          attribute's
+          %code.inline value
+          with 1. Clearly, the structures of these requests are quite different, so it's up to you which methods you'll support in building an API. William Durand goes into more detail on PATCH's intricacies in his blog post
+          %a{:href => "http://williamdurand.fr/2014/02/14/please-do-not-patch-like-an-idiot/"} “Please. Don't Patch Like an Idiot.”
+        %h2#what-are-my-options What are my OPTIONS?
+        %p.body
+          OPTIONS is a method that checks the requested server to see what it will allow the client to do. Many browsers will automatically send an OPTIONS request before any PUT or PATCH request to ensure that it's allowed as part of
+          = succeed "." do
+            %a{:href => "https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Preflighted_requests"} CORS preflight checks
+          If you find your API is rejecting OPTIONS requests when trying to PUT or PATCH, you'll need to define the route and set the
+          %code.inline Access-Control-Allow-Methods
+          header to include OPTIONS. If you're using Rails, the route will look something like this:
+        %p.body
+          %pre match '/my_resource/:id', to: 'my_resource#update', via: [:options]
+        %h2#psa-microsoft-edge-is-busted PSA: Microsoft Edge is Busted!
+        %p.body
+          One note about using PUT and PATCH client-side:
+          %strong these methods completely break when used in Microsoft Edge!
+          Don't worry, it's not your fault; the latest build of Edge currently has a bug that deletes the body of any PUT or PATCH request and sets
+          %code.inline Content-Length
+          to 0. Yes, really. No, I can't believe it either. This was pointed out by
+          = succeed "," do
+            %a{:href => "https://github.com/javan"} @javan
+          who has a wonderful demo repo explaining the problem
+          = succeed "." do
+            %a{:href => "https://github.com/javan/fetch-put-patch-demo"} here
+          Thankfully,
+          = succeed "," do
+            %a{:href => "https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7773267/"} Microsoft already has a fix for this
+          but it's not yet available in a public release.
+        %p.body
+          What's a girl to do when you've got to support Edge, but also need to make client-side update requests to your API? I'm currently using POST as a workaround, which is awful and I hate it, but it gets the job done. The fix is relatively easy, too, especially if you're using Rails like I am. In addition to the regular
+          %code.inline resources
+          line in your
+          %code.inline routes.rb
+          file, you just need to explicitly route the POST method to your
+          %code.inline update
+          action:
+        %p.body
+          %pre
+            resources :my_resource, only: [:index, :create, :update]&#x000A;post '/my_resource/:id', to: 'my_resource#update'
+        %p.body
+          And in your client-side app, simply change the method you're using (PUT/PATCH) to POST. Everything should work as previously expected! No, this fix isn't ideal, as it completely goes against the HTTP Protocol. But with PUT and PATCH completely out of commission for an entire browser's worth of users, using them simply isn't an option currently.
+          %a{:href => "http://twitter.com/megandtiu"} I'd love to hear any other workaround suggestions
+          that are more Correct if you've got them!
