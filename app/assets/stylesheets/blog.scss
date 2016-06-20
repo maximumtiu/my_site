@@ -30,6 +30,11 @@
     height: 60%;
     width: 60%;
     margin: 2% 0;
+
+    &.big {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   pre {
@@ -56,6 +61,15 @@
 
   .heavier {
     font-weight: 400;
+  }
+
+  .left-header {
+    text-align: left;
+  }
+
+  .centered-img {
+    text-align: center;
+    margin-left: 15%;
   }
 }
 

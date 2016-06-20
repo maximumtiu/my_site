@@ -1,0 +1,167 @@
+= render partial: "static/header.html.haml"
+.window.blog
+  .row
+    .col-xs-12.col-sm-12.col-md-12.blogstream
+      %h1.title#upgrading-rails-doesnt-have-to-be-painful Upgrading Rails Doesn't Have to Be Painful
+      .post
+        %p.date-stamp June 19, 2016
+        %p.body
+          Rails 5 is nearly here! But you're dreading the upgrade process. Fear no more, friend: this guide has you covered. This year, I was fortunate enough to attend RailsConf in Kansas City, including the
+          %a{:href => "https://speakerdeck.com/derekprior/keep-rails-upgraded"} Keep Rails Upgraded
+          workshop by
+          %a{:href => "https://github/derekprior"} Derek Prior,
+          %a{:href => "https://github.com/calebthompson"} Caleb Thompson,
+          and
+          %a{:href => "https://github.com/schneems"} Richard Schneeman.
+          As someone relatively new to Rails, they swiftly took me from never having upgraded Rails versions to feeling totally comfortable updating my apps in production.
+        %p.body Depending on the size of your app, this isn't intended to be a particularly short process. You'll be reading gem changelogs, wrestling with deprecation warnings, and waiting patiently for your Rubygems dependencies to resolve. But it's really not as hard as it seems! Also, while this guide is written with Rails 5 in mind, the rules are general enough to guide you through any version upgrade.
+        %p.body
+          I'll be using Derek Prior's
+          %a{:href => "https://github.com/derekprior/lobsters"} lobsters repo
+          for my example, which is what they used in the RailsConf workshop. Feel free to follow along by cloning the repository and starting at the master branch!
+        %h2#begin-anew-branch 0. Begin Anew (Branch)
+        %p.body
+          Before you really get started, create a new git branch for your work. You may be inclined to think, “Oh, but I'm only upgrading to 5 from 4.2.6. I'll be fine!” 12+ attempted (and failed)
+          = succeed "s" do
+            %code.inline bundle update
+          later, you'll realize that you were very wrong. Do keep in mind that you'll want to keep as much of your progress in your main branch as possible, so don't be afraid to merge your new branch into your base branch for any of the work you do in step 1.
+        %h2#start-with-a-clean-test-suite 1. Start with a Clean Test Suite
+        %p.body Yes, all of your tests should be passing. But that's not all! You also shouldn't have any deprecation warnings while your test suite runs. (Otherwise, something will break during the upgrade process!) If you're upgrading to Rails 5 from 4.2, you'll see warnings for anything that will be unsupported or removed in 5.0 while running your current 4.2.x test suite. Ideally you'll also be starting with all or most of your gems up to date, which will make the process much easier.
+        %p.body
+          The
+          %a{:href => "https://github.com/derekprior/lobsters"} lobsters example
+          doesn't have any deprecation warnings when you clone the master branch, so I'll touch on these a little later in
+          = succeed "." do
+            %a{:href => "#deprecation-warnings-be-gone"} step 8
+        %h2#bundle-update 2. Bundle Update
+        %p.body
+          Now that you're prepared, it's time for the exciting part! Go ahead to update your Gemfile specifying the newest Rails version. At time of writing, that's:
+          %pre gem 'rails', '~&gt; 5.0.0.rc1'
+        %p.body
+          And now, switch over to the shell and run
+          %pre $ bundle update rails
+        %h2#dont-panic 3. Don't Panic
+        %p.body
+          You're going to see some error messages like this:
+        = image_tag "update-deps.png", alt: "dependency conflicts", class: 'body'
+        %p.body
+          But this is totally normal and expected. We're conditioned to think the worst when we're doing a routine
+          %code.inline bundle
+          and things come to a screeching halt with red text, but this is what you've been waiting for! You now have an actionable step to take on your road to upgrade.
+        %p.body
+          So, what's bundler trying to say here? The first line tells us that different gems we depend on require different versions of railties. I looks like jquery-rails and rails itself are simpatico in wanting newer versions, but the version of rspec-rails we're currently using, 3.4.2, is looking for a version of railties that's
+          = succeed "." do
+            %code.inline < 4.3
+        %h2#update-the-offending-gem 4. Update the Offending Gem
+        %p.body
+          If we go over to the rspec-rails
+          = succeed "," do
+            %a{:href => "https://rubygems.org/gems/rspec-rails"} Rubygems page
+          we'll see that there's a new version available:
+        = image_tag 'update-rspec.png', class: 'body', alt: 'rspec-rails new version'
+        %p.body
+          Looks like this version depends on
+          = succeed "." do
+            %code.inline railties >= 3.0
+          The most recent version we'll need is
+          = succeed "," do
+            %code.inline 5.0.0.rc1
+          so this version of rspec-rails is compatible! Just specify the new version in your Gemfile:
+          %pre gem 'rspec-rails', '~> 3.5.0.beta4'
+        %p.body
+          Now, because
+          %code.inline bundle update
+          will accept multiple gem arguments, you can run
+          %pre $ bundle update rails rspec-rails
+        %p.body
+          to try again.
+        %h2#were-still-not-panicking 5. We're Still Not Panicking
+        %p.body
+          This time, it looks like exception_notification is the problem because of an actionmailer conflict.
+        = image_tag 'update-mailer.png', class: 'body', alt: 'actionmailer conflict'
+        %p.body
+          To Rubygems! Wait…
+        = image_tag 'update-exception.png', class: 'body', alt: 'exception_notification old version'
+        %p.body
+          Oh no! It looks like the version we're using of exception_notification is the latest. Never fear, this is fixable as well. We'll head on over to their GitHub repo…and they have a dedicated
+          %code.inline rails5
+          branch (with associated PR
+          = succeed ")!" do
+            %a{:href => "https://github.com/smartinez87/exception_notification/pull/306"} here
+          In our Gemfile, we'll use this branch specifically, instead of the latest Rubygems release:
+          %pre gem 'exception_notification', github: 'smartinez87/exception_notification', branch: 'rails5'
+        %p.body
+          and try to
+          %code.inline bundle update
+          again:
+          %pre $ bundle update rails rspec-rails exception_notification
+        %h2#success-right 6. Success! …Right?
+        %p.body
+          Ah, the two sweetest words in Rails development:
+        = image_tag 'update-bundled.png', class: 'body', alt: 'successful bundle update'
+        %p.body
+          The hardest part's over! Now's a great time to commit your progress. I'll wait.
+        %p.body
+          …Okay, now that you've commited (on a dedicated upgrade branch!), we want to make sure nothing broke in your app. Go ahead and run your test suite.
+        = image_tag 'update-failing.png', class: 'body big', alt: 'failing tests'
+        %p.body
+          Yikes, it looks like we've got a bit going on here.
+        %h2#make-your-tests-pass 7. Make Your Tests Pass
+        %p.body
+          Of course, the most important thing here is that tests are failing. Let's make those pass immediately! We'll want to take look at the
+          %code.inline email_parser_spec
+          and the
+          %code.inline email_parser
+          files to see what's wrong.
+        %p.body
+          Hint: on line 13 of
+          = succeed "," do
+            %code.inline app/extras/email_parser.rb
+          we're calling
+          = succeed "." do
+            %code.inline Utils.silent_stream
+          But if we look in the Utils model, that's an instance method! We can edit the EmailParser to use
+          %code.inline Utils.new.silent_stream
+          and…
+        = image_tag 'update-passing.png', class: 'body', alt: 'passing tests'
+        %p.body
+          Boom! Our tests are passing. Now, about those pesky deprecation warnings…
+        %h2#deprecation-warnings-be-gone 8. Deprecation Warnings, Be Gone!
+        %p.body
+          Thankfully, all of these deprecation warnings have very useful messages. Take this for example:
+        = image_tag 'update-warning.png', class: 'body big', alt: 'helpful deprecation warning'
+        %p.body
+          When we go directly to the named file and look for
+          = succeed "," do
+            %code.inline config.static_cache_control
+          we can delete the line containing it and paste the suggested code in its place.
+        = image_tag 'update-new-code.png', class: 'body big', alt: 'suggested code from the warning'
+        %p.body
+          Since all the warnings we have are accompanied by very helpful messages, we can repeat this process for each one until they're all fixed.
+        %p.body
+          Note: if you're upgrading a different app and can't find the ultimate source of your deprecation warning (maybe it's being called in your
+          %code.inline config/environment.rb
+          file, which you haven't touched), do some Googling around. You're not the only person trying to make this same upgrade, and one of your dependencies may have an issue filed for the error.
+        %p.body Now, run the test suite again and…
+        %h2#celebrate- 9. Celebrate! 🎉
+        = image_tag 'update-clean.png', class: 'body', alt: 'clean suite'
+        %p.body
+          Passing tests and no deprecation warnings! We did it! We upgraded to Rails 5! And it really wasn't that bad.
+        %h2#takeaways-and-advice-for-more-complex-upgrades Takeaways (and Advice for More Complex Upgrades)
+        %p.body Above all, it's most important in this process to remember that you're in control of what's happening. Yes, your large-scale production app will be more difficult to upgrade than the example used here. But that's okay! Some other things to keep in mind while upgrading:
+        %ul
+          %li If your gems are severely out of date, say, a new major version has been released since you last checked on it, make sure you read the changelog before updating. There could be breaking changes in the new version that you'd prefer to know about beforehand!
+          %li When updating gems, if you're updating to a pre-release version like a beta or release candidate, you must explicitly specify this in your Gemfile. Otherwise, Bundler assumes you want the latest official build.
+          %li
+            With a more complex app with lots of dependencies, you're going to need to repeat steps 3-5. A lot. Don't get discouraged; this is normal. If you find yourself chaining a ridiculously long list of apps in one
+            %code.inline bundle update
+            command, break it up into chunks, starting with the least-offensive gems and working your way up to bigger ones (if you're using refinerycms, good luck). Commit your progress along the way to keep everything tidy and manageable.
+          %li
+            Finally, if you're looking for specific Rails 5 upgrade advice, the
+            %a{:href => "https://speakerdeck.com/derekprior/keep-rails-upgraded"} slide deck
+            from the RailsConf workshop has a lot of great tips of some of the bigger changes most likely to trigger deprecation warnings or test failures.
+        %p.body
+          Don't you feel better now? And so accomplished! If you've got any questions, please feel free to
+          = succeed "." do
+            %a{:href => "http://megantiu.com/contact"} contact me
+          Happy upgrading!

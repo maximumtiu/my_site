@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'blog/5' => 'blog#post_five'
   get 'blog/6' => 'blog#post_six'
   get 'blog/7' => 'blog#post_seven'
+  get 'blog/8' => 'blog#post_eight'
 
   get 'blog/1/the-five-most-meaningful-lessons-from-coding-bootcamp' => 'blog#post_one'
   get 'blog/2/on-the-importance-of-side-projects'                    => 'blog#post_two'
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
   get 'blog/5/rubys-enumerable-module-and-you'                       => 'blog#post_five'
   get 'blog/6/adventures-of-a-one-woman-development-team'            => 'blog#post_six'
   get 'blog/7/the-ins-and-outs-of-put-and-patch'                     => 'blog#post_seven'
+  get 'blog/8/upgrading-rails-doesnt-have-to-be-painful'             => 'blog#post_eight'
 end
