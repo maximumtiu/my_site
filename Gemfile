@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.3.1'
-gem 'rails', '5.0.0.rc1'
+gem 'rails', '5.0.0.rc2'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -13,14 +13,14 @@ gem 'html2haml'
 gem 'kramdown'
 
 group :development do
-	gem 'sqlite3'
+  gem 'sqlite3'
   gem 'web-console'
   gem 'better_errors'
 end
 
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
