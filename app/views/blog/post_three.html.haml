@@ -1,8 +1,12 @@
+- @title = "#BlogBuddies"
+- content_for :meta do
+  %title #{@title + " - Megan Tiu "}
+
 = render partial: "static/header.html.haml"
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream
-      %h2.title #BlogBuddies
+      %h2.title #{@title}
       .post
         %p.date-stamp May 15, 2016
         %p.body Learning is fun. But when you learn a lot at once, it's hard to keep track of all the things you learn in a given time.

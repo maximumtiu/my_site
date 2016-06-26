@@ -1,8 +1,12 @@
+- @title = "Upgrading Rails Doesn't Have to Be Painful"
+- content_for :meta do
+  %title #{@title + " - Megan Tiu "}
+
 = render partial: "static/header.html.haml"
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream
-      %h1.title#upgrading-rails-doesnt-have-to-be-painful Upgrading Rails Doesn't Have to Be Painful
+      %h1.title#upgrading-rails-doesnt-have-to-be-painful #{@title}
       .post
         %p.date-stamp June 19, 2016
         %p.body

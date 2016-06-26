@@ -1,8 +1,12 @@
+- @title = "The Ins and Outs of PUT and PATCH"
+- content_for :meta do
+  %title #{@title + " - Megan Tiu "}
+
 = render partial: "static/header.html.haml"
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream
-      %h1.title#the-ins-and-outs-of-put-and-patch The Ins and Outs of PUT and PATCH
+      %h1.title#the-ins-and-outs-of-put-and-patch #{@title}
       .post
         %p.date-stamp June 12, 2016
         %p.body The world of HTTP is vast! GET and POST are by far the most popular type of requests, but they'll only get you so far. Until recently, the only instances I'd ever really needed to use methods other than GET and POST were server-side while consuming others' APIs; this never proved to be an issue. Lately, however, I've been making more API requests from my own client-side apps, which has brought along some unique challenges. What if you need to update a resource? Meet PUT and PATCH.

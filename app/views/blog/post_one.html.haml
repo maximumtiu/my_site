@@ -1,8 +1,12 @@
+- @title = "The 5 Most Meaningful Lessons I Learned from Coding Bootcamp"
+- content_for :meta do
+  %title #{@title + " - Megan Tiu "}
+
 = render partial: "static/header.html.haml"
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream
-      %h2.title The 5 Most Meaningful Lessons I Learned from Coding Bootcamp
+      %h2.title #{@title}
       .post
         %p.date-stamp September 20, 2015
         %a{:href => "http://techtalentsouth.com/student-blog/5-most-meaningful-lessons-i-learned-from-coding-bootcamp/"}

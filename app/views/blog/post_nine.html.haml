@@ -1,8 +1,12 @@
+- @title = "Apprenticeship Patterns: Lessons Learned"
+- content_for :meta do
+  %title #{@title + " - Megan Tiu "}
+
 = render partial: "static/header.html.haml"
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream
-      %h1.title#apprenticeship-patterns-lessons-learned Apprenticeship Patterns: Lessons Learned
+      %h1.title#apprenticeship-patterns-lessons-learned #{@title}
       .post
         %p.date-stamp June 26, 2016
         %p.body
