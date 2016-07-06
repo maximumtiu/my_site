@@ -10,4 +10,10 @@ class StaticController < ApplicationController
 
   def now
   end
+
+  def resume
+    filename = "#{Rails.root}/app/assets/images/resume.pdf"
+    send_file(filename, filename: 'Megan_Tiu_resume.pdf', disposition: 'inline',
+      type: 'application/pdf')
+  end
 end
