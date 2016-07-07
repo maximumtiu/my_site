@@ -83,3 +83,9 @@ a:hover {
     padding: 0 25px;
   }
 }
+
+@media screen and (max-width: 330px) {
+  .links {
+    font-size: 16px;
+  }
+}

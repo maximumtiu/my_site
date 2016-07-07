@@ -1,23 +1,26 @@
 - content_for :meta do
   %title Megan Tiu
-  %meta{description: "Megan Tiu is a full-stack web developer based in Atlanta, Georgia."}
+  %meta{description: "Megan Tiu is a full-stack web developer based in Atlanta,
+    Georgia."}
 
 .container.home
   .photo
-    %a{:href => "/"}
-      = image_tag "me.jpg", class: "img-responsive img-circle me-pic", alt: "Megan Tiu"
+    %a{:href => '/'}
+      = image_tag 'me.jpg', class: 'img-responsive img-circle me-pic',
+        alt: 'Megan Tiu'
   %h1.name Megan Tiu
   .social-icons
-    = link_to image_tag('my_tw2.png'), "http://twitter.com/megandtiu"
-    = link_to image_tag("32px.png"), "http://github.com/megantiu"
-    = link_to image_tag("my_li2.png"), "http://linkedin.com/in/megantiu"
-    = link_to image_tag("email.png"), "mailto:megan@megantiu.com"
+    = link_to image_tag('my_tw2.png'), 'http://twitter.com/megandtiu'
+    = link_to image_tag('32px.png'), 'http://github.com/megantiu'
+    = link_to image_tag('my_li2.png'), 'http://linkedin.com/in/megantiu'
+    = link_to image_tag('email.png'), 'mailto:megan@megantiu.com'
   .description
     %p
       I'm a full-stack web developer in Atlanta, GA currently working for
-      %a{:href => "http://www.fittery.com"} Fittery.
+      %a{:href => 'http://www.fittery.com'} Fittery.
   .links
-    = link_to "about", about_path, class: "link"
-    = link_to "contact", contact_path, class: "link"
-    = link_to "blog", blog_path, class: "link"
-    = link_to "now", now_path, class: "link"
+    = link_to 'about', about_path, class: 'link'
+    = link_to 'contact', contact_path, class: 'link'
+    = link_to 'blog', blog_path, class: 'link'
+    = link_to 'resume', '/resume', class: 'link'
+    = link_to 'now', now_path, class: 'link'
