@@ -6,6 +6,23 @@
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream
+      %a{:href => "blog/10/files-created-by-rails-generators"}
+        %h2.title Files Created by Rails Generators
+        %p.date-stamp July 19, 2016
+      .post
+        %p.body Generators are one of Rails' greatest features and one of the reasons it's so easy to get up and running with new Rails projects. Unfortunately, they tend to be accompanied by a lot of extra files you may or may not need. Whenever I'm using generators, I like to know exactly what I'm getting into file-wise, ideally via a reference that lists what files I can expect to have when running them. Yes, this exists in the form of man pages for each individual generator, but I prefer to be able to see many at once, comparing my options. I've yet to see this kind of resource. Until now.
+        %p.body
+          For this guide, I'll be using a Rails 5.0 default application with no additional gems and no modifications to the generator system. If you're looking to modify the content created by the generators, Thoughtbot has a helpful blog post on that
+          = succeed "." do
+            %a{:href => "https://robots.thoughtbot.com/reduce-application-clutter-disable-unwanted-rails"} here
+          Railsguides.net also has a great post on generator usage and getting more out of the basic generators
+          = succeed "." do
+            %a{:href => "http://railsguides.net/advanced-rails-model-generators/"} here
+          With that said...
+        %p.body
+          %a{:href => "blog/10/files-created-by-rails-generators"} Read more...
+  .row
+    .col-xs-12.col-sm-12.col-md-12.blogstream
       %a{:href => "blog/9/apprenticeship-patterns-lessons-learned"}
         %h2.title Apprenticeship Patterns: Lessons Learned
         %p.date-stamp June 26, 2016

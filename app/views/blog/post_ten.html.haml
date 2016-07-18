@@ -1,0 +1,168 @@
+- @title = "Files Created by Rails Generators"
+- content_for :meta do
+  %title #{@title + " - Megan Tiu "}
+
+= render partial: "static/header.html.haml"
+.window.blog
+  .row
+    .col-xs-12.col-sm-12.col-md-12.blogstream
+      %h1.title#adventures-of-a-one-woman-development-team #{@title}
+      .post
+        %p.date-stamp July 19, 2016
+        %p.body Generators are one of Rails' greatest features and one of the reasons it's so easy to get up and running with new Rails projects. Unfortunately, they tend to be accompanied by a lot of extra files you may or may not need. Whenever I'm using generators, I like to know exactly what I'm getting into file-wise, ideally via a reference that lists what files I can expect to have when running them. Yes, this exists in the form of man pages for each individual generator, but I prefer to be able to see many at once, comparing my options. I've yet to see this kind of resource. Until now.
+        %p.body
+          For this guide, I'll be using a Rails 5.0 default application with no additional gems and no modifications to the generator system. If you're looking to modify the content created by the generators, Thoughtbot has a helpful blog post on that
+          = succeed "." do
+            %a{:href => "https://robots.thoughtbot.com/reduce-application-clutter-disable-unwanted-rails"} here
+          Railsguides.net also has a great post on generator usage and getting more out of the basic generators
+          = succeed "." do
+            %a{:href => "http://railsguides.net/advanced-rails-model-generators/"} here
+          With that said...
+        %p.body
+          Note: the commands for running rails generators are
+          = succeed "," do
+            %code.inline rails generate [type]
+          %code.inline rails g [type]
+          for ease. I'll just be using
+          %code.inline g
+          instead of
+          %code.inline generate
+          here.
+        %h2#rails-g-migration rails g migration
+        %p.body
+          This generator will just create a migration file under
+          %code.inline db/migrate
+          as named with a timestamp. For example,
+          %code.inline rails g migration CreateUsers
+          will generate a file called
+          %code.inline 20150717155949_create_users.rb
+          and it will contain the following text:
+        %p.body
+          %pre
+            class CreateUsers &lt; ActiveRecord::Migration[5.0]&#x000A;&nbsp;def change&#x000A;&nbsp;&nbsp;create_table :users do |t|&#x000A;&nbsp;&nbsp;end&#x000A;&nbsp;end&#x000A;end
+        %p.body
+          You can also pass arguments to this generator for whatever arguments you're creating/modifying, like so:
+          %code.inline rails g migration AddBirthdateToUsers birthdate:date
+        %h2#rails-g-model rails g model
+        %p.body
+          The model generator creates a model file for the named resource, a database migration to create the appropriate table, and the appropriate test files. So, new files for
+          %code.inline rails g model User
+          are as follows:
+          %pre
+            app/models/user.rb&#x000A;test&#x000A;&nbsp;models/user_test.rb&#x000A;&nbsp;fixtures/users.yml
+        %h2#rails-g-controller rails g controller
+        %p.body
+          The controller generator creates a controller, a controller test file, an associated helper. You can also pass arguments in the form of controller actions to this generator. So,
+          %code.inline rails g controller Static index
+          will create the following:
+        %p.body
+          %pre
+            app&#x000A;&nbsp;assets&#x000A;&nbsp;&nbsp;javascripts/static.coffee&#x000A;&nbsp;&nbsp;stylesheets/static.scss&#x000A;&nbsp;controllers/static_controller.rb&#x000A;&nbsp;helpers/static_helper.rb&#x000A;&nbsp;views/static/index.html.erb&#x000A;test&#x000A;&nbsp;controllers/static_controller_test.rb
+        %p.body
+          as well as routes for your defined actions in your
+          %code.inline config/routes.rb
+          file.
+        %h2#rails-g-scaffold rails g scaffold
+        %p.body
+          This is the big kahuna. The scaffold creates a model, controller, views, assets (styles and javascript), tests, and routes for the designated resource, as well as a database migration for the new table. The controller files are fully operable, complete with
+          = succeed "," do
+            %code.inline index
+          = succeed "," do
+            %code.inline create
+          = succeed "," do
+            %code.inline new
+          = succeed "," do
+            %code.inline edit
+          = succeed "," do
+            %code.inline show
+          = succeed "," do
+            %code.inline update
+          %code.inline destroy
+          methods and controller test files are full of working tests.
+          %code.inline rails g scaffold Post title body:text
+          will create the following files:
+        %p.body
+          %pre
+            app&#x000A;&nbsp;assets&#x000A;&nbsp;javascripts/posts.coffee&#x000A;&nbsp;stylesheets/posts.scss&#x000A;&nbsp;controllers/posts_controller.rb&#x000A;&nbsp;helpers/posts_helper.rb&#x000A;&nbsp;models/post.rb&#x000A;&nbsp;views/posts&#x000A;&nbsp;&nbsp;_form.html.erb&#x000A;&nbsp;&nbsp;index.html.erb&#x000A;&nbsp;&nbsp;index.json.jbuilder&#x000A;&nbsp;&nbsp;edit.html.erb&#x000A;&nbsp;&nbsp;show.html.erb&#x000A;&nbsp;&nbsp;show.json.jbuilder&#x000A;&nbsp;&nbsp;new.html.erb&#x000A;test&#x000A;&nbsp;controllers/post_controller_test.rb&#x000A;&nbsp;fixtures/posts.yml&#x000A;&nbsp;models/post_test.rb
+        %p.body Note: adding an attribute argument with no defined datatype defaults to the string type.
+        %h2#rails-g-resource rails g resource
+        %p.body
+          Unlike the scaffold generator, this generator doesn't create views or add methods to the generated controller. In addition to the new table's database migration and a
+          %code.inline resources :posts
+          line in your
+          %code.inline config/routes.rb
+          file,
+          %code.inline rails g resource Purchase user_id:integer
+          will create:
+          %pre
+            app&#x000A;&nbsp;assets&#x000A;&nbsp;&nbsp;javascripts/posts.coffee&#x000A;&nbsp;&nbsp;stylesheets/posts.scss&#x000A;&nbsp;controllers/posts_controller.rb&#x000A;&nbsp;helpers/posts_helper.rb&#x000A;&nbsp;models/post.rb&#x000A;&nbsp;views/posts&#x000A;test&#x000A;&nbsp;controllers/post_controller_test.rb&#x000A;&nbsp;fixtures/posts.yml&#x000A;&nbsp;models/post_test.rb
+        %h2#rails-g-scaffoldcontroller rails g scaffold_controller
+        %p.body
+          If you like the guidance of the scaffolded controllers and front-end, but don't need any of the data modeling functionality, this generator is for you.  Like the scaffold, the controller test file will be fully populated.
+          %code.inline rails g scaffold_controller Hello
+          will create:
+        %p.body
+          %pre
+            app&#x000A;&nbsp;controllers/hellos_controller.rb&#x000A;&nbsp;helpers/hellos_helper.rb&#x000A;&nbsp;views/hellos&#x000A;&nbsp;&nbsp;index.html.erb&#x000A;&nbsp;&nbsp;index.json.jbuilder&#x000A;&nbsp;&nbsp;edit.html.erb&#x000A;&nbsp;&nbsp;show.html.erb&#x000A;&nbsp;&nbsp;show.json.jbuilder&#x000A;&nbsp;&nbsp;new.html.erb&#x000A;&nbsp;&nbsp;_form.html.erb&#x000A;test/controllers/hellos_controller_test.rb&#x000A;
+        %h2#rails-g-mailer rails g mailer
+        %p.body
+          This generator creates a mailer and blank mailer test files, named appropriately.
+          %code.inline rails g mailer Campaign
+          will create:
+          %pre
+            app&#x000A;&nbsp;mailers/campaign_mailer.rb&#x000A;&nbsp;views/campaign_mailer&#x000A;test/mailers&#x000A;&nbsp;previews/campaign_mailer_preview.rb&#x000A;&nbsp;campaign_mailer_test.rb
+        %h2#rails-g-helper rails g helper
+        %p.body
+          This simply creates a helper file, again named as you please.
+          %code.inline rails g helper Auth
+          will create:
+        %p.body
+          %pre app/helpers/auth_helper.rb
+        %h2#rails-g-task rails g task
+        %p.body
+          Similarly to the helper generator, the task generator simply creates the named rake task file.
+          %code.inline rails g task Cleanup
+          creates:
+          %pre lib/tasks/cleanup.rake
+        %h2#rails-g-job rails g job
+        %p.body
+          The job generator,
+          %code.inline rails g job Import
+          for example, creates:
+          %pre
+            app/jobs/import_job.rb&#x000A;test/jobs/import_job_test.rb
+        %h2#rails-g-assets rails g assets
+        %p.body
+          If front-end's your thing, the assets generator creates only a javascript file and a css file as named.
+          %code.inline rails g assets Smile
+          will create:
+          %pre
+            app/assets&#x000A;javascripts/smile.coffee&#x000A;stylesheets/smile.scss
+        %h2#rails-g-channel rails g channel
+        %p.body
+          New in Rails 5, this generator creates the necessary files for a new ActionCable channel.
+          %code.inline rails g channel Chat speak
+          will create:
+          %pre
+            app&#x000A;&nbsp;assets/javascripts/channels/chat.coffee&#x000A;&nbsp;channels/chat_channel.rb
+        %p.body
+          As of the 5.0 release,
+          %code.inline app/assets/javascripts/channels/chat.coffee
+          will look like this:
+          %pre
+            App.chat = App.cable.subscriptions.create "ChatChannel",&#x000A;&nbsp;connected: ->&#x000A;&nbsp;&nbsp;# Called when the subscription is ready for use on the server&#x000A;&#x000A;&nbsp;disconnected: ->&#x000A;&nbsp;&nbsp;# Called when the subscription has been terminated by the server&#x000A;&#x000A;&nbsp;received: (data) ->&#x000A;&nbsp;&nbsp;# Called when there's incoming data on the websocket for this channel
+        %p.body
+          and
+          %code.inline app/channels/chat_channel.rb
+          will look like this:
+          %pre
+            class ChatChannel < ApplicationCable::Channel&#x000A;&nbsp;def subscribed&#x000A;&nbsp;&nbsp;# stream_from "some_channel"&#x000A;&nbsp;end&#x000A;&#x000A;&nbsp;def unsubscribed&#x000A;&nbsp;&nbsp;# Any cleanup needed when channel is unsubscribed&#x000A;&nbsp;end&#x000A;end
+        %h2#rails-d rails d
+        %p.body
+          Finally, this acts as an undo button when you run a generator. Just as you'd run
+          = succeed "," do
+            %code.inline rails g model User
+          you can run
+          %code.inline rails d model User
+          to delete all files generated with the model generator. You can use this with any of the generators listed above. Super useful if you find you've made a typo somewhere in your naming, or realize you don't really need all those files when you scaffold.
+        %p.body I've personally wanted a reference for these generators anytime I use them, so I hope this guide was as helpful for you as it is for me.
