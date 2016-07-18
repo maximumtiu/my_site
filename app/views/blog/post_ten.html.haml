@@ -52,7 +52,7 @@
             app/models/user.rb&#x000A;test&#x000A;&nbsp;models/user_test.rb&#x000A;&nbsp;fixtures/users.yml
         %h2#rails-g-controller rails g controller
         %p.body
-          The controller generator creates a controller, a controller test file, an associated helper. You can also pass arguments in the form of controller actions to this generator. So,
+          The controller generator creates a controller, a controller test file, and an associated helper. You can also pass arguments in the form of controller actions to this generator. So,
           %code.inline rails g controller Static index
           will create the following:
         %p.body
@@ -78,7 +78,7 @@
           = succeed "," do
             %code.inline update
           %code.inline destroy
-          methods and controller test files are full of working tests.
+          methods. Controller test files are also full of working tests.
           %code.inline rails g scaffold Post title body:text
           will create the following files:
         %p.body
@@ -98,7 +98,7 @@
             app&#x000A;&nbsp;assets&#x000A;&nbsp;&nbsp;javascripts/posts.coffee&#x000A;&nbsp;&nbsp;stylesheets/posts.scss&#x000A;&nbsp;controllers/posts_controller.rb&#x000A;&nbsp;helpers/posts_helper.rb&#x000A;&nbsp;models/post.rb&#x000A;&nbsp;views/posts&#x000A;test&#x000A;&nbsp;controllers/post_controller_test.rb&#x000A;&nbsp;fixtures/posts.yml&#x000A;&nbsp;models/post_test.rb
         %h2#rails-g-scaffoldcontroller rails g scaffold_controller
         %p.body
-          If you like the guidance of the scaffolded controllers and front-end, but don't need any of the data modeling functionality, this generator is for you.  Like the scaffold, the controller test file will be fully populated.
+          If you like the guidance of the scaffolded controllers and front-end files, but don't need any of the data modeling functionality, this generator is for you.  Like the scaffold, the controller test file will be fully populated.
           %code.inline rails g scaffold_controller Hello
           will create:
         %p.body
