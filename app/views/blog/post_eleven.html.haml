@@ -1,0 +1,59 @@
+- @title = "Your Own Personal .gitignore"
+- content_for :meta do
+  %title #{@title + " - Megan Tiu "}
+
+= render partial: "static/header.html.haml"
+.window.blog
+  .row
+    .col-xs-12.col-sm-12.col-md-12.blogstream
+      %h1.title#your-own-personal-gitignore Your Own Personal .gitignore
+      .post
+        %p.date-stamp August 21, 2016
+        %p.body
+          Have you been wanting a way to create and keep new files in a git repo without checking them into git, and
+          %em also
+          not adding them to your .gitignore? Maybe you're working on a large team and want to impose on them neither your config files nor another line in the project's
+          = succeed "?" do
+            %code.inline .gitignore
+          Well, you're in luck.
+        %p.body
+          It's the
+          = succeed "!" do
+            %strong git exclude
+        %p.body
+          Git's exclude file functions just like
+          = succeed "," do
+            %code.inline .gitignore
+          but it isn't checked into git, so committing and pushing your project will allow you to keep your excluded files locally, wihle not making any changes to the remote repository.
+        %p.body
+          In your project's
+          %code.inline .git
+          directory,
+          %code.inline cd
+          into the
+          %code.inline info
+          directory. There, you'll find a file called
+          = succeed "." do
+            %code.inline exclude
+          Just open it with your favorite text editor and start adding filenames. Alternatively, if you'd like to exclude a file, say Procfile.dev, from your project's root directory with just one command, you can run:
+        %p.body
+          %pre echo "Procfile.dev" >> .git/info/exclude
+        %p.body
+          You can also throw the following function into your
+          %code.inline .bashrc
+          or
+          %code.inline .bash_profile
+          and run
+          %code.inline git_exclude "filename"
+          on the command line:
+        %p.body
+          %pre
+            git_exclude() {&#x000A;&nbsp;&nbsp;echo $1 &gt;&gt; .git/info/exclude&#x000A;}
+        %p.body
+          Similarly with
+          = succeed "," do
+            %code.inline .gitignore
+          if you exclude a file after it's already been checked-in and committed, you'll have to forcibly remove the file from git like so:
+        %p.body
+          %pre git rm --cached
+        %p.body Then, the excluded file will register as deleted from your git repository.

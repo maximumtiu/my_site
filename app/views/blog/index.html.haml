@@ -6,6 +6,25 @@
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream
+      %a{:href => 'blog/11/your-own-personal-gitignore'}
+        %h2.title Your Own Personal .gitignore
+        %p.date-stamp August 21, 2016
+      .post
+        %p.body
+          Have you been wanting a way to create and keep new files in a git repo without checking them into git, and
+          %em also
+          not adding them to your .gitignore? Maybe you're working on a large team and want to impose on them neither your config files nor another line in the project's
+          = succeed "?" do
+            %code.inline .gitignore
+          Well, you're in luck.
+        %p.body
+          It's the
+          = succeed "!" do
+            %strong git exclude
+        %p.body
+          %a{:href => 'blog/11/your-own-personal-gitignore'} Read more...
+  .row
+    .col-xs-12.col-sm-12.col-md-12.blogstream
       %a{:href => "blog/10/files-created-by-rails-generators"}
         %h2.title Files Created by Rails Generators
         %p.date-stamp July 17, 2016

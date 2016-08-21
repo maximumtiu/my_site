@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'blog/8'  => 'blog#post_eight'
   get 'blog/9'  => 'blog#post_nine'
   get 'blog/10' => 'blog#post_ten'
+  get 'blog/11' => 'blog#post_eleven'
 
   get 'blog/1/the-five-most-meaningful-lessons-from-coding-bootcamp' => 'blog#post_one'
   get 'blog/2/on-the-importance-of-side-projects'                    => 'blog#post_two'
@@ -28,4 +29,5 @@ Rails.application.routes.draw do
   get 'blog/8/upgrading-rails-doesnt-have-to-be-painful'             => 'blog#post_eight'
   get 'blog/9/apprenticeship-patterns-lessons-learned'               => 'blog#post_nine'
   get 'blog/10/files-created-by-rails-generators'                    => 'blog#post_ten'
+  get 'blog/11/your-own-personal-gitignore'                          => 'blog#post_eleven'
 end
