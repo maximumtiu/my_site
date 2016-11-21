@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .about {
-	font-size: 18px;
-	text-align: left;
+  font-size: 18px;
+  text-align: left;
 }
 
 .container.home {
@@ -35,7 +35,7 @@
 
   li {
     text-align: left;
-    margin: 10px 0; 
+    margin: 10px 0;
   }
 
   p#now {
@@ -48,6 +48,10 @@
   ul {
     margin: 0 15%;
     text-align: left;
+
+    ul {
+      margin: 0 2%;
+    }
   }
 
   li {
@@ -58,9 +62,9 @@
 /* About page */
 
 @media screen and (min-width: 1200px) {
-	.content.about {
+  .content.about {
     padding: 0 175px;
-	}
+  }
 }
 
 /* Now list responsive adjustments */
@@ -81,30 +85,30 @@
  /* Homepage responsivity */
 
 @media screen and (max-width: 991px) {
-	.container.home {
-	  .description {
-	    padding: 0 25px;
-	  }
-	}
+  .container.home {
+    .description {
+      padding: 0 25px;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
-	.container.home {
-	  .me-pic {
-	    height: 30%;
-	    width: 30%;
-	  }
-	}
+  .container.home {
+    .me-pic {
+      height: 30%;
+      width: 30%;
+    }
+  }
 }
 
 @media screen and (max-width: 425px) {
-	.container.home {
-	  .me-pic {
-	    height: 45%;
-	    width: 45%;
-	  }
-	  .about {
-	  	font-size: 15px;
-	  }
-	}
+  .container.home {
+    .me-pic {
+      height: 45%;
+      width: 45%;
+    }
+    .about {
+      font-size: 15px;
+    }
+  }
 }
