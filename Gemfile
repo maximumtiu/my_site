@@ -1,30 +1,28 @@
 source 'https://rubygems.org'
 
 ruby '2.4.0'
-gem 'rails', '5.0.0'
-gem 'sass-rails'
+gem 'rails', '~> 5.0.0'
 gem 'uglifier'
-gem 'coffee-rails'
+gem 'sass-rails'
 gem 'bootstrap-sass'
-gem 'rollbar'
-gem 'haml-rails'
-gem 'html2haml'
-gem 'kramdown'
+gem 'rollbar' # error reporting
+gem 'haml-rails' # haml templating
+gem 'kramdown' # converting markdown to html
+gem 'html2haml' # converting html to haml
 
 group :development do
   gem 'sqlite3'
-  gem 'web-console'
-  gem 'better_errors'
-end
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+  gem 'better_errors' # more helpful errors
+  gem 'web-console' # console on error page
 end
 
 group :development, :test do
-  gem 'spring'
   gem 'pry'
   gem 'pry-rails'
-  gem 'dotenv-rails'
+  gem 'dotenv-rails' # env vars
+end
+
+group :production do #hosted on heroku
+  gem 'pg'
+  gem 'rails_12factor'
 end
