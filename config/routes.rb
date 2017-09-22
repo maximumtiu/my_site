@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'blog/9'  => 'blog#post_nine'
   get 'blog/10' => 'blog#post_ten'
   get 'blog/11' => 'blog#post_eleven'
+  get 'blog/12' => 'blog#post_twelve'
 
   get 'blog/3/blog-buddies'                                          => 'blog#post_three'
   get 'blog/4/getting-and-setting-cookies-in-javascript'             => 'blog#post_four'
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
   get 'blog/9/apprenticeship-patterns-lessons-learned'               => 'blog#post_nine'
   get 'blog/10/files-created-by-rails-generators'                    => 'blog#post_ten'
   get 'blog/11/your-own-personal-gitignore'                          => 'blog#post_eleven'
+  get 'blog/12/building-an-xd64-mechanical-keyboard'                 => 'blog#post_twelve'
 end
