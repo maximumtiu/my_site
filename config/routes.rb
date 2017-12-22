@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'about'   => 'static#about'
   get 'contact' => 'static#contact'
   get 'now'     => 'static#now'
-  get 'talks'  => 'static#talks'
+  get 'talks'   => 'static#talks'
+  get 'me'      => 'static#me'
 
   get 'blog'    => 'blog#index'
   get 'blog/3'  => 'blog#post_three'

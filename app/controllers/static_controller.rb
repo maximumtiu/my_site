@@ -11,9 +11,21 @@ class StaticController < ApplicationController
   def now
   end
 
+  def me
+    serve_file('me.jpg', 'Megan_Tiu_headshot.jpg', 'image/jpeg')
+  end
+
   def resume
-    filename = "#{Rails.root}/app/assets/images/resume.pdf"
-    send_file(filename, filename: 'Megan_Tiu_resume.pdf', disposition: 'inline',
-      type: 'application/pdf')
+    serve_file('resume.pdf', 'Megan_Tiu_resume.pdf', 'application/pdf')
+  end
+
+  private
+
+  # asset_name - name of file in app/assets, including extension
+  # file_name - name to show folks when downloading in the client
+  # mime - MIME type of asset we're serving
+  def serve_file(asset_name, file_name, mime)
+    path = "#{Rails.root}/app/assets/images/#{asset_name}"
+    send_file(path, filename: file_name, disposition: 'inline', type: mime)
   end
 end
