@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'contact' => 'static#contact'
   get 'now'     => 'static#now'
   get 'talks'   => 'static#talks'
-  get 'resume'  => 'static#resume'
   get 'me'      => 'static#me'
 
   get 'blog'    => 'blog#index'
