@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   root 'static#index'
 
-  get 'about'   => 'static#about'
-  get 'contact' => 'static#contact'
-  get 'now'     => 'static#now'
-  get 'talks'   => 'static#talks'
-  get 'me'      => 'static#me'
+  get 'about'    => 'static#about'
+  get 'contact'  => 'static#contact'
+  get 'now'      => 'static#now'
+  get 'talks'    => 'static#talks'
+  get 'me'       => 'static#me'
+  get 'wishlist' => 'static#wishlist'
 
   get 'blog'    => 'blog#index'
   get 'blog/3'  => 'blog#post_three'

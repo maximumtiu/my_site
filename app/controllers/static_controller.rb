@@ -1,15 +1,9 @@
 class StaticController < ApplicationController
-  def home
-  end
-
-  def about
-  end
-
-  def contact
-  end
-
-  def now
-  end
+  def home; end
+  def about; end
+  def contact; end
+  def now; end
+  def wishlist; end
 
   def me
     serve_file('me.jpg', 'Megan_Tiu_headshot.jpg', 'image/jpeg')
