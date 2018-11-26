@@ -69,6 +69,16 @@
   }
 }
 
+/* Talks and Wishlist pages */
+
+@media screen and (max-width: 425px) {
+  .content.talks {
+    ul {
+      margin: 0 5%;
+    }
+  }
+}
+
 /* About page */
 
 @media screen and (min-width: 1200px) {
