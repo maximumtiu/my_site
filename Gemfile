@@ -4,7 +4,7 @@ ruby '2.4.0'
 gem 'rails', '~> 5.1.0'
 gem 'uglifier'
 gem 'sass-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.4'
 gem 'rollbar' # error reporting
 gem 'haml-rails' # haml templating
 gem 'kramdown' # converting markdown to html
