@@ -2,7 +2,7 @@
 - content_for :meta do
   %title #{@title + " - Megan Tiu "}
 
-= render partial: "static/header.html.haml"
+= render 'shared/header'
 .window.blog
   .row
     .col-xs-12.col-sm-12.col-md-12.blogstream

@@ -1,0 +1,10 @@
+.partial
+  .photo
+    %a{:href => '/'}
+      = image_tag 'me.jpg', class: 'img-responsive img-circle me-pic',
+        alt: 'Megan Tiu'
+  %h1.name Megan Tiu
+  .social-icons
+    = render 'shared/social_icons'
+  .links
+    = render 'shared/links'
