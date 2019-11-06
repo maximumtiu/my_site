@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'talks'    => 'static#talks'
   get 'me'       => 'static#me'
   get 'wishlist' => 'static#wishlist'
-  get 'resume'   => 'static#resume'
 
   get 'blog'    => 'blog#index'
   get 'blog/3'  => 'blog#post_three'
