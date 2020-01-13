@@ -64,6 +64,27 @@ a:hover {
   padding: 0 150px;
 }
 
+#social-container {
+  text-align: center;
+  .icon-container {
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+  }
+  #twitter{
+    background-image: asset-url('twitter-light.png');
+  }
+  #github {
+    background-image: asset-url('github-light.png');
+  }
+  #linkedin{
+    background-image: asset-url('linkedin-light.png');
+  }
+  #email{
+    background-image: asset-url('email-light.png');
+  }
+}
+
 /* Static content responsivity */
 
 @media screen and (max-width: 992px) {
