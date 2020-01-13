@@ -1,6 +1,12 @@
 @mixin covert-link {
   text-decoration: none;
   color: #000;
+  @media(prefers-color-scheme: dark) {
+    color: white;
+  }
+  @media(prefers-color-scheme: light) {
+    color: black;
+  }
 }
 
 .blog {
@@ -48,6 +54,18 @@
   code {
     color: #23527C;
     background-color: #E8FAFF;
+    @media(prefers-color-scheme: dark) {
+      color: #E8FAFF;
+      background-color: #23527C;
+    }
+  }
+
+  pre {
+    color: #23527C;
+    @media(prefers-color-scheme: dark) {
+      color: #9cd0ff;
+      background-color: #4d4d4d;
+    }
   }
 
   ul, ol {

@@ -5,11 +5,29 @@
 
 body {
   margin-bottom: 20px;
+
+  @media(prefers-color-scheme: dark) {
+    background-color: black;
+    color: white;
+  }
+  @media(prefers-color-scheme: light) {
+    background-color: white;
+    color: black;
+  }
 }
 
+a {
+  color: #337ab7;
+  @media(prefers-color-scheme: dark) {
+    color: #79C7FD;
+  }
+}
 a:hover {
   color: #79C7FD;
   text-decoration: none;
+  @media(prefers-color-scheme: dark) {
+    color: #337ab7;
+  }
 }
 
 .name {
@@ -32,7 +50,38 @@ a:hover {
 
 .social-icons {
   text-align: center;
-  margin: 1.5em 0;
+  margin: 1.5em 0 1em 0;
+  .icon-container {
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+  }
+  #twitter{
+    background-image: asset-url('twitter-light.png');
+  }
+  #github {
+    background-image: asset-url('github-light.png');
+  }
+  #linkedin{
+    background-image: asset-url('linkedin-light.png');
+  }
+  #email{
+    background-image: asset-url('email-light.png');
+  }
+  @media(prefers-color-scheme: dark) {
+    #twitter{
+      background-image: asset-url('twitter-dark.png');
+    }
+    #github {
+      background-image: asset-url('github-dark.png');
+    }
+    #linkedin{
+      background-image: asset-url('linkedin-dark.png');
+    }
+    #email{
+      background-image: asset-url('email-dark.png');
+    }
+  }
 }
 
 .links {
@@ -62,27 +111,6 @@ a:hover {
   text-align: center;
   font-size: 18px;
   padding: 0 150px;
-}
-
-#social-container {
-  text-align: center;
-  .icon-container {
-    height: 32px;
-    width: 32px;
-    display: inline-block;
-  }
-  #twitter{
-    background-image: asset-url('twitter-light.png');
-  }
-  #github {
-    background-image: asset-url('github-light.png');
-  }
-  #linkedin{
-    background-image: asset-url('linkedin-light.png');
-  }
-  #email{
-    background-image: asset-url('email-light.png');
-  }
 }
 
 /* Static content responsivity */
