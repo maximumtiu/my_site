@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.4.0'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 gem 'uglifier'
 gem 'sass-rails'
 gem 'bootstrap-sass', '~> 3.4'
