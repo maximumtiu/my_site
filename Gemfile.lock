@@ -79,7 +79,7 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     loofah (2.3.1)
       crass (~> 1.0.2)
@@ -136,7 +136,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    rexml (3.2.4)
+    rexml (3.2.5)
     rollbar (2.14.0)
       multi_json
     ruby_parser (3.11.0)
