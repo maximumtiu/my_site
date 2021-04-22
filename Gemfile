@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.7.2'
 gem 'rails', '~> 5.2.0'
 gem 'uglifier'
 gem 'sass-rails'
