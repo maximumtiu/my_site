@@ -6,11 +6,11 @@ class StaticController < ApplicationController
   def wishlist; end
 
   def me
-    serve_file('me.jpg', 'Megan_Tiu_headshot.jpg', 'image/jpeg')
+    serve_file('me.jpg', 'Max_Tiu_headshot.jpg', 'image/jpeg')
   end
 
   def resume
-    serve_file('resume.pdf', 'Megan_Tiu_resume.pdf', 'application/pdf')
+    serve_file('resume.pdf', 'Max_Tiu_resume.pdf', 'application/pdf')
   end
 
   private

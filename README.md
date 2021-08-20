@@ -1,3 +1,3 @@
 # my_site
 
-Live at [megantiu.com](http://megantiu.com)
+Live at [maximumtiu.com](http://maximumtiu.com)

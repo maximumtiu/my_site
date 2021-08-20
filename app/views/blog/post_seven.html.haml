@@ -1,6 +1,6 @@
 - @title = "The Ins and Outs of PUT and PATCH"
 - content_for :meta do
-  %title #{@title + " - Megan Tiu "}
+  %title #{@title + " - Max Tiu "}
 
 = render 'shared/header'
 .window.blog
@@ -73,5 +73,5 @@
             resources :my_resource, only: [:index, :create, :update]&#x000A;post '/my_resource/:id', to: 'my_resource#update'
         %p.body
           And in your client-side app, simply change the method you're using (PUT/PATCH) to POST. Everything should work as previously expected! No, this fix isn't ideal, as it completely goes against the HTTP Protocol. But with PUT and PATCH completely out of commission for an entire browser's worth of users, using them simply isn't an option currently.
-          %a{:href => "http://twitter.com/megandtiu"} I'd love to hear any other workaround suggestions
+          %a{:href => "http://twitter.com/maximumtiu"} I'd love to hear any other workaround suggestions
           that are more Correct if you've got them!
